@@ -156,135 +156,156 @@
 
         <div class="map-container">
             <div class="map-section">
-                <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Background -->
-                    <rect width="800" height="600" fill="#87CEEB"/>
+                <svg viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg" style="background: #E8E2D6;">
+                    <!-- Water Background -->
+                    <rect width="1000" height="700" fill="#E8E2D6"/>
+                    <rect x="0" y="0" width="360" height="700" fill="#A6D8FF"/>
+                    <rect x="0" y="0" width="360" height="700" fill="url(#seaFade)" opacity="0.85"/>
+                    <defs>
+                        <linearGradient id="seaFade" x1="0" y1="0" x2="1" y2="0">
+                            <stop offset="0%" stop-color="#A6D8FF" stop-opacity="1"/>
+                            <stop offset="100%" stop-color="#A6D8FF" stop-opacity="0.1"/>
+                        </linearGradient>
+                    </defs>
 
-                    <!-- Legend Title -->
-                    <g id="legend" transform="translate(10, 10)">
-                        <rect x="0" y="0" width="200" height="80" fill="white" stroke="#ccc" stroke-width="1" rx="4"/>
-                        <text x="10" y="20" font-size="12" font-weight="bold" fill="#333">Territory Control</text>
-                        <rect x="10" y="30" width="15" height="15" fill="#1976D2" rx="2"/>
-                        <text x="30" y="42" font-size="11" fill="#333">Israeli</text>
-                        <rect x="10" y="50" width="15" height="15" fill="#D84315" rx="2"/>
-                        <text x="30" y="62" font-size="11" fill="#333">Arab Coalition</text>
-                        <rect x="110" y="30" width="15" height="15" fill="#FDD835" rx="2"/>
-                        <text x="130" y="42" font-size="11" fill="#333">Disputed</text>
-                    </g>
+                    <text x="180" y="360" font-size="22" fill="#3D5A80" opacity="0.65" text-anchor="middle" font-weight="bold">Mediterranean Sea</text>
 
-                    <!-- Syria (Arab) -->
-                    <path d="M 550 100 L 650 90 L 680 120 L 670 180 L 600 200 L 550 150 Z" 
-                          fill="#D84315" stroke="#333" stroke-width="2" class="territory" data-region="Syria">
-                        <title>Syria</title>
-                    </path>
-                    <text x="600" y="140" font-size="16" font-weight="bold" fill="white" text-anchor="middle" pointer-events="none">SYRIA</text>
-
-                    <!-- Israel -->
-                    <path d="M 480 220 L 520 210 L 540 250 L 520 320 L 480 310 L 470 260 Z" 
-                          fill="#1976D2" stroke="#333" stroke-width="2" class="territory" data-region="Israel">
-                        <title>Israel</title>
-                    </path>
-                    <text x="500" y="265" font-size="14" font-weight="bold" fill="white" text-anchor="middle" pointer-events="none">ISRAEL</text>
-
-                    <!-- West Bank (Disputed/Jordanian control) -->
-                    <rect x="465" y="250" width="30" height="60" fill="#FDD835" stroke="#333" stroke-width="2" class="territory" data-region="West Bank"/>
-                    <text x="480" y="285" font-size="10" font-weight="bold" fill="#333" text-anchor="middle" pointer-events="none">WB</text>
+                    <!-- Palestine/Israel region -->
+                    <path d="M 420 140 C 390 125 345 135 325 150 C 300 170 290 200 285 230 C 285 260 295 295 310 330 C 320 360 335 390 360 410 C 385 430 400 450 410 475 C 435 530 455 560 475 570 C 500 545 510 500 512 450 C 515 410 510 370 495 330 C 485 300 478 260 470 220 C 465 190 445 165 420 140 Z"
+                          fill="#1E8BC3" stroke="#333" stroke-width="2.5" class="territory" data-region="Israel" id="territory-Israel"/>
+                    <text x="455" y="240" font-size="18" font-weight="bold" fill="white" text-anchor="middle" pointer-events="none">ISRAEL</text>
 
                     <!-- Gaza Strip -->
-                    <rect x="450" y="320" width="20" height="40" fill="#FDD835" stroke="#333" stroke-width="2" class="territory" data-region="Gaza"/>
-                    <text x="460" y="345" font-size="9" font-weight="bold" fill="#333" text-anchor="middle" pointer-events="none">GZ</text>
+                    <path d="M 310 330 C 320 315 330 305 338 300 C 345 295 350 295 355 300 C 358 310 358 325 353 335 C 345 345 330 350 320 345 C 312 340 310 335 310 330 Z"
+                          fill="#FDD835" stroke="#333" stroke-width="2" class="territory" data-region="Gaza" id="territory-Gaza"/>
+                    <text x="335" y="330" font-size="10" font-weight="bold" fill="#333" text-anchor="middle" pointer-events="none">Gaza</text>
 
-                    <!-- Egypt (Arab) -->
-                    <path d="M 300 280 L 450 290 L 460 480 L 300 500 Z" 
-                          fill="#D84315" stroke="#333" stroke-width="2" class="territory" data-region="Egypt">
-                        <title>Egypt</title>
-                    </path>
-                    <text x="350" y="400" font-size="18" font-weight="bold" fill="white" text-anchor="middle" pointer-events="none">EGYPT</text>
+                    <!-- West Bank -->
+                    <path d="M 470 220 C 494 215 520 225 535 245 C 558 275 560 315 548 340 C 535 365 515 380 495 375 C 478 365 468 340 465 320 C 462 300 460 275 470 255 C 472 240 470 225 470 220 Z"
+                          fill="#FDD835" stroke="#333" stroke-width="2" class="territory" data-region="West Bank" id="territory-West Bank"/>
+                    <text x="500" y="300" font-size="10" font-weight="bold" fill="#333" text-anchor="middle" pointer-events="none">W.B.</text>
 
-                    <!-- Sinai Peninsula (Disputed at start) -->
-                    <path d="M 450 290 L 500 300 L 520 450 L 460 480 Z" 
-                          fill="#FDD835" stroke="#333" stroke-width="2" class="territory" data-region="Sinai">
-                        <title>Sinai Peninsula</title>
-                    </path>
-                    <text x="480" y="380" font-size="12" font-weight="bold" fill="#333" text-anchor="middle" pointer-events="none">SINAI</text>
+                    <!-- Jordan -->
+                    <path d="M 540 215 C 590 200 640 220 665 265 C 690 320 690 380 670 450 C 650 500 620 520 585 520 C 560 500 550 470 547 430 C 545 390 540 330 540 255 L 540 215 Z"
+                          fill="#D84315" stroke="#333" stroke-width="2.5" class="territory" data-region="Jordan" id="territory-Jordan"/>
+                    <text x="615" y="310" font-size="18" font-weight="bold" fill="white" text-anchor="middle" pointer-events="none">JORDAN</text>
 
-                    <!-- Jordan (Arab) -->
-                    <path d="M 520 250 L 550 240 L 580 280 L 560 360 L 520 320 Z" 
-                          fill="#D84315" stroke="#333" stroke-width="2" class="territory" data-region="Jordan">
-                        <title>Jordan</title>
-                    </path>
-                    <text x="545" y="295" font-size="14" font-weight="bold" fill="white" text-anchor="middle" pointer-events="none">JORDAN</text>
+                    <!-- Syria -->
+                    <path d="M 455 120 C 485 110 540 105 575 120 C 610 135 630 170 638 205 C 643 235 642 265 633 290 C 620 320 600 340 575 350 C 545 355 520 350 500 330 C 480 305 470 270 465 235 C 460 205 455 160 455 120 Z"
+                          fill="#D84315" stroke="#333" stroke-width="2.5" class="territory" data-region="Syria" id="territory-Syria"/>
+                    <text x="545" y="195" font-size="18" font-weight="bold" fill="white" text-anchor="middle" pointer-events="none">SYRIA</text>
 
-                    <!-- Lebanon (Arab, neutral) -->
-                    <path d="M 520 140 L 550 100 L 570 130 L 560 160 Z" 
-                          fill="#D84315" stroke="#333" stroke-width="2" class="territory" data-region="Lebanon">
-                        <title>Lebanon</title>
-                    </path>
-                    <text x="545" y="130" font-size="11" font-weight="bold" fill="white" text-anchor="middle" pointer-events="none">LBN</text>
+                    <!-- Lebanon -->
+                    <path d="M 455 110 C 470 100 490 100 502 115 C 510 130 510 150 500 160 C 487 158 470 145 455 130 C 455 120 455 110 455 110 Z"
+                          fill="#D84315" stroke="#333" stroke-width="2" class="territory" data-region="Lebanon" id="territory-Lebanon"/>
+                    <text x="485" y="140" font-size="11" font-weight="bold" fill="white" text-anchor="middle" pointer-events="none">LEBANON</text>
 
-                    <!-- Golan Heights (Disputed) -->
-                    <ellipse cx="565" cy="110" rx="20" ry="15" fill="#FDD835" stroke="#333" stroke-width="2" class="territory" data-region="Golan Heights"/>
-                    <text x="565" y="115" font-size="8" font-weight="bold" fill="#333" text-anchor="middle" pointer-events="none">GOLAN</text>
+                    <!-- Golan Heights -->
+                    <path d="M 595 155 C 615 150 628 165 625 180 C 617 190 602 190 595 180 C 590 168 590 160 595 155 Z"
+                          fill="#FDD835" stroke="#333" stroke-width="2" class="territory" data-region="Golan Heights" id="territory-Golan Heights"/>
+                    <text x="610" y="173" font-size="10" font-weight="bold" fill="#333" text-anchor="middle" pointer-events="none">GOLAN</text>
 
-                    <!-- Key Cities -->
-                    <circle cx="500" cy="240" r="5" fill="#000" class="city" data-city="Tel Aviv"/>
-                    <text x="510" y="245" font-size="10" fill="#000">Tel Aviv</text>
+                    <!-- Sinai Peninsula -->
+                    <path d="M 360 410 C 365 425 370 445 378 465 C 385 485 395 505 410 520 C 420 535 435 550 450 565 C 345 640 255 620 200 560 C 170 520 162 470 175 420 C 185 385 210 360 245 340 C 270 325 300 320 330 325 C 340 345 345 365 355 385 C 360 405 360 410 360 410 Z"
+                          fill="#FDD835" stroke="#333" stroke-width="2" class="territory" data-region="Sinai" id="territory-Sinai"/>
+                    <text x="325" y="440" font-size="13" font-weight="bold" fill="#333" text-anchor="middle" pointer-events="none">SINAI</text>
 
-                    <circle cx="510" cy="290" r="5" fill="#000" class="city" data-city="Jerusalem"/>
-                    <text x="520" y="295" font-size="10" fill="#000">Jerusalem</text>
+                    <!-- Egypt -->
+                    <path d="M 180 550 C 210 590 255 620 300 620 C 320 605 340 585 345 560 C 330 555 315 540 300 525 C 280 505 255 475 240 420 C 220 380 210 350 205 330 C 170 300 135 295 110 330 C 90 370 90 400 90 470 C 90 520 110 540 180 550 Z"
+                          fill="#D84315" stroke="#333" stroke-width="2.5" class="territory" data-region="Egypt" id="territory-Egypt"/>
+                    <text x="205" y="500" font-size="18" font-weight="bold" fill="white" text-anchor="middle" pointer-events="none">EGYPT</text>
 
-                    <circle cx="380" cy="420" r="5" fill="#000" class="city" data-city="Cairo"/>
-                    <text x="390" y="425" font-size="10" fill="#000">Cairo</text>
+                    <!-- Coastal and geographic details -->
+                    <path d="M 360 140 C 310 130 280 150 245 180 C 220 205 205 245 205 290 C 205 335 220 385 230 420"
+                          fill="none" stroke="#333" stroke-width="3" stroke-linecap="round" opacity="0.35"/>
+                    <path d="M 360 140 C 385 125 425 120 465 135"
+                          fill="none" stroke="#333" stroke-width="3" stroke-linecap="round" opacity="0.35"/>
+                    <path d="M 200 560 C 225 585 265 600 305 600"
+                          fill="none" stroke="#333" stroke-width="3" stroke-linecap="round" opacity="0.35"/>
 
-                    <circle cx="620" cy="165" r="5" fill="#000" class="city" data-city="Damascus"/>
-                    <text x="630" y="170" font-size="10" fill="#000">Damascus</text>
+                    <!-- Major Cities -->
+                    <circle cx="435" cy="200" r="6" fill="#000" class="city" data-city="Tel Aviv"/>
+                    <text x="435" y="185" font-size="11" fill="#222" font-weight="bold" text-anchor="middle">Tel Aviv</text>
 
-                    <!-- Military bases markers (simplified) -->
-                    <g id="bases">
-                        <rect x="375" y="380" width="8" height="8" fill="#FF6B6B" transform="rotate(45 379 384)"/>
-                        <text x="360" y="405" font-size="9" fill="#FF6B6B">Egyptian Air Base</text>
+                    <circle cx="462" cy="255" r="6" fill="#000" class="city" data-city="Jerusalem"/>
+                    <text x="480" y="269" font-size="11" fill="#222" font-weight="bold">Jerusalem</text>
 
-                        <rect x="590" y="140" width="8" height="8" fill="#FF6B6B" transform="rotate(45 594 144)"/>
-                        <text x="600" y="155" font-size="9" fill="#FF6B6B">Syrian Air Base</text>
+                    <circle cx="305" cy="525" r="6" fill="#000" class="city" data-city="Cairo"/>
+                    <text x="305" y="540" font-size="11" fill="#222" font-weight="bold" text-anchor="middle">Cairo</text>
 
-                        <rect x="515" y="235" width="8" height="8" fill="#4CAF50" transform="rotate(45 519 239)"/>
-                        <text x="450" y="235" font-size="9" fill="#4CAF50">Israeli Forces</text>
-                    </g>
+                    <circle cx="570" cy="140" r="6" fill="#000" class="city" data-city="Damascus"/>
+                    <text x="590" y="135" font-size="11" fill="#222" font-weight="bold">Damascus</text>
+
+                    <circle cx="620" cy="285" r="6" fill="#000" class="city" data-city="Amman"/>
+                    <text x="640" y="295" font-size="11" fill="#222" font-weight="bold">Amman</text>
+
+                    <!-- Title Box -->
+                    <rect x="10" y="10" width="250" height="60" fill="white" stroke="#333" stroke-width="2" rx="5" opacity="0.96"/>
+                    <text x="20" y="35" font-size="16" font-weight="bold" fill="#333">Middle East - June 5, 1967</text>
+                    <text x="20" y="55" font-size="12" fill="#666">Six-Day War Opening</text>
+
+                    <!-- Legend Box -->
+                    <rect x="10" y="85" width="230" height="140" fill="white" stroke="#333" stroke-width="1.5" rx="4" opacity="0.96"/>
+                    <text x="20" y="105" font-size="13" font-weight="bold" fill="#333">Control:</text>
+                    
+                    <rect x="20" y="115" width="18" height="18" fill="#1976D2" stroke="#333" stroke-width="1"/>
+                    <text x="45" y="128" font-size="11" fill="#333">Israeli Territory</text>
+                    
+                    <rect x="20" y="140" width="18" height="18" fill="#D84315" stroke="#333" stroke-width="1"/>
+                    <text x="45" y="153" font-size="11" fill="#333">Arab Coalition</text>
+                    
+                    <rect x="20" y="165" width="18" height="18" fill="#FDD835" stroke="#333" stroke-width="1"/>
+                    <text x="45" y="178" font-size="11" fill="#333">Disputed/Contested</text>
+
+                    <circle cx="29" cy="199" r="4" fill="#000" stroke="#fff" stroke-width="1"/>
+                    <text x="45" y="204" font-size="11" fill="#333">Major Cities</text>
                 </svg>
             </div>
 
             <div class="map-legend">
-                <div class="legend-title">Starting Positions - June 5, 1967</div>
+                <div class="legend-title">Six-Day War Strategic Game</div>
 
-                <div class="legend-item" onclick="showInfo('israel')">
-                    <div class="legend-color" style="background: #1976D2;"></div>
-                    <div class="legend-text">
-                        <h3>Israel</h3>
-                        <p>Small but well-armed state</p>
-                    </div>
+                <div style="margin-bottom: 15px;">
+                    <label><strong>Choose Your Side:</strong></label><br/>
+                    <button style="width: 48%; padding: 10px; margin: 5px 1%;" onclick="chooseSide('israel')">🇮🇱 Play as Israel</button>
+                    <button style="width: 48%; padding: 10px; margin: 5px 1%;" onclick="chooseSide('arab')">🇪🇬 Play as Arab Coalition</button>
                 </div>
 
-                <div class="legend-item" onclick="showInfo('egypt')">
-                    <div class="legend-color" style="background: #D84315;"></div>
-                    <div class="legend-text">
-                        <h3>Arab Coalition</h3>
-                        <p>Egypt, Syria, Jordan, Iraq</p>
-                    </div>
-                </div>
-
-                <div class="legend-item" onclick="showInfo('disputed')">
-                    <div class="legend-color" style="background: #FDD835;"></div>
-                    <div class="legend-text">
-                        <h3>Contested Territory</h3>
-                        <p>Sinai, Gaza, West Bank, Golan</p>
-                    </div>
-                </div>
-
-                <div class="info-box" id="info-display">
-                    <strong>Click on regions or legend items for details</strong>
-                    <p style="margin-top: 10px; font-size: 12px;">
-                        The Six-Day War began on June 5, 1967, with Israel launching a preemptive military strike against Egypt and Syria. This map shows the territorial control and military positions at the start of the conflict.
+                <div class="info-box" id="info-display" style="margin-top: 10px;">
+                    <strong>⚔️ Welcome to Six-Day War Strategy Game</strong>
+                    <p style="margin-top: 10px; font-size: 12px; line-height: 1.5;">
+                        <strong>How to Play:</strong><br/>
+                        1. Choose your side (Israeli or Arab Coalition)<br/>
+                        2. Each turn, make strategic decisions<br/>
+                        3. Control territories, move units, engage in combat<br/>
+                        4. Win conditions: Control key territories or defeat enemy forces<br/>
+                        <br/>
+                        <strong>Game Duration:</strong> 6 turns (representing the 6 days)<br/>
+                        <strong>Your Decisions Matter:</strong> Change history!
                     </p>
+                </div>
+
+                <div id="game-panel" style="display: none; margin-top: 15px;">
+                    <div class="info-box" style="border-left-color: #4CAF50;">
+                        <strong>Turn: <span id="current-turn">1</span>/6</strong><br/>
+                        <strong id="player-side">Your Side: Israel</strong><br/>
+                        <br/>
+                        <strong>Forces:</strong><br/>
+                        Israeli: <span id="israeli-units">8</span> units | Morale: <span id="israeli-morale">85</span>%<br/>
+                        Arab: <span id="arab-units">12</span> units | Morale: <span id="arab-morale">70</span>%<br/>
+                        <br/>
+                        <button style="width: 100%; padding: 10px; background: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;" onclick="nextTurn()">End Turn</button>
+                    </div>
+
+                    <div class="info-box" style="border-left-color: #FF9800; margin-top: 10px;">
+                        <strong>Available Actions:</strong>
+                        <div id="actions-list" style="font-size: 11px; margin-top: 8px;"></div>
+                    </div>
+
+                    <div id="battle-log" class="info-box" style="border-left-color: #2196F3; margin-top: 10px; display: none;">
+                        <strong>Battle Report:</strong>
+                        <div id="battle-report" style="font-size: 10px; margin-top: 8px; max-height: 100px; overflow-y: auto;"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -303,7 +324,50 @@
     <div class="region-info" id="tooltip"></div>
 
     <script>
-        // Regional information
+        // Game State
+        let gameState = {
+            turn: 0,
+            playerSide: null, // 'israel' or 'arab'
+            isrealUnits: 8,
+            arabUnits: 12,
+            israeliMorale: 85,
+            arabMorale: 70,
+            territoriesControl: {
+                'Israel': 'israel',
+                'Egypt': 'arab',
+                'Syria': 'arab',
+                'Jordan': 'arab',
+                'Lebanon': 'arab',
+                'West Bank': 'disputed',
+                'Gaza': 'disputed',
+                'Sinai': 'disputed',
+                'Golan Heights': 'disputed'
+            },
+            battleLog: [],
+            usedActions: [] // Track which actions have been used
+        };
+
+        // Strategic Actions available (with usage limits)
+        const strategicActions = {
+            israel: [
+                { id: 'air-strike', name: '✈️ Preemptive Air Strike', effect: 'arab-morale-hit', value: -20, maxUses: 1 },
+                { id: 'sinai-advance', name: '🚀 Advance into Sinai', effect: 'capture-territory', territory: 'Sinai', maxUses: 1 },
+                { id: 'golan-attack', name: '🎯 Attack Golan Heights', effect: 'capture-territory', territory: 'Golan Heights', maxUses: 1 },
+                { id: 'west-bank-secure', name: '📍 Secure West Bank', effect: 'capture-territory', territory: 'West Bank', maxUses: 1 },
+                { id: 'morale-boost', name: '💪 Boost Morale', effect: 'israel-morale-boost', value: 10, maxUses: 2 },
+                { id: 'reinforce', name: '🛡️ Reinforce Positions', effect: 'israel-units-gain', value: 1, maxUses: 3 }
+            ],
+            arab: [
+                { id: 'coordination', name: '🌍 Unit Coordination', effect: 'arab-morale-boost', value: 15, maxUses: 2 },
+                { id: 'defense-setup', name: '🛡️ Defensive Positions', effect: 'arab-defense-boost', value: 10, maxUses: 2 },
+                { id: 'counterattack', name: '💣 Counterattack Israeli', effect: 'israel-units-loss', value: 2, maxUses: 2 },
+                { id: 'reposition', name: '🔄 Reposition Forces', effect: 'reorganize-units', value: 3, maxUses: 3 },
+                { id: 'air-defense', name: '✈️ Air Defense Setup', effect: 'arab-air-defense', value: 15, maxUses: 1 },
+                { id: 'alliance-support', name: '🤝 Request Alliance Support', effect: 'arab-units-gain', value: 2, maxUses: 1 }
+            ]
+        };
+
+        // Regional Information
         const regionInfo = {
             'Israel': {
                 control: 'Israeli',
@@ -361,32 +425,269 @@
             }
         };
 
-        // Preset info displays
-        const presetInfo = {
-            'israel': '<strong>🇮🇱 Israel</strong><br/>Population: ~2.8M<br/>Strategy: Preemptive air strike to neutralize Arab air forces, then ground offensive<br/>Advantage: Superior coordination and training',
-            'egypt': '<strong>🇪🇬 Egypt</strong><br/>Population: ~30M<br/>Military: Largest Arab air force (~900 aircraft)<br/>Challenge: Lack of coordination with other Arab states',
-            'disputed': '<strong>⚔️ Contested Areas</strong><br/>Sinai, Gaza, West Bank, Golan Heights<br/>Strategic importance for both sides<br/>Would become main battlegrounds'
-        };
+        function chooseSide(side) {
+            gameState.playerSide = side;
+            gameState.turn = 1;
+            gameState.usedActions = []; // Reset used actions
+            // Reset territories to starting positions
+            gameState.territoriesControl = {
+                'Israel': 'israel',
+                'Egypt': 'arab',
+                'Syria': 'arab',
+                'Jordan': 'arab',
+                'Lebanon': 'arab',
+                'West Bank': 'disputed',
+                'Gaza': 'disputed',
+                'Sinai': 'disputed',
+                'Golan Heights': 'disputed'
+            };
+            // Reset territory colors
+            Object.keys(gameState.territoriesControl).forEach(territory => {
+                changeTerritoryColor(territory, gameState.territoriesControl[territory]);
+            });
+            document.getElementById('game-panel').style.display = 'block';
+            document.getElementById('player-side').textContent = side === 'israel' ? 'Your Side: 🇮🇱 Israel' : 'Your Side: 🇪🇬 Arab Coalition';
+            updateGameDisplay();
+            generateActions();
+        }
 
-        // Add click handlers to territories
-        document.querySelectorAll('.territory').forEach(territory => {
-            territory.addEventListener('click', function() {
-                const region = this.getAttribute('data-region');
-                if (regionInfo[region]) {
-                    showRegionInfo(region);
+        function updateGameDisplay() {
+            document.getElementById('current-turn').textContent = gameState.turn;
+            document.getElementById('israeli-units').textContent = gameState.isrealUnits;
+            document.getElementById('arab-units').textContent = gameState.arabUnits;
+            document.getElementById('israeli-morale').textContent = gameState.israeliMorale;
+            document.getElementById('arab-morale').textContent = gameState.arabMorale;
+        }
+
+        function generateActions() {
+            const actions = strategicActions[gameState.playerSide] || [];
+            let html = '<div style="display: flex; flex-direction: column; gap: 8px;">';
+            actions.forEach((action, idx) => {
+                const usedCount = gameState.usedActions.filter(used => used === action.id).length;
+                const canUse = usedCount < action.maxUses;
+                const buttonStyle = canUse 
+                    ? 'background: #2196F3; color: white; cursor: pointer;' 
+                    : 'background: #ccc; color: #666; cursor: not-allowed;';
+                
+                html += `<button style="padding: 8px; border: none; border-radius: 4px; font-size: 11px; text-align: left; ${buttonStyle}" 
+                         ${canUse ? `onclick="executeAction(${idx})"` : 'disabled'}>
+                         ${action.name} ${usedCount > 0 ? `(${usedCount}/${action.maxUses})` : ''}
+                         </button>`;
+            });
+            html += '</div>';
+            document.getElementById('actions-list').innerHTML = html;
+        }
+
+        function executeAction(actionIndex) {
+            const actions = strategicActions[gameState.playerSide];
+            const action = actions[actionIndex];
+            
+            // Check if action can be used
+            const usedCount = gameState.usedActions.filter(used => used === action.id).length;
+            if (usedCount >= action.maxUses) return;
+            
+            // Mark action as used
+            gameState.usedActions.push(action.id);
+            
+            let report = `Turn ${gameState.turn}: `;
+
+            if (action.effect === 'arab-morale-hit') {
+                gameState.arabMorale = Math.max(0, gameState.arabMorale + action.value);
+                report += `Israeli Preemptive Air Strike! Arab morale drops to ${gameState.arabMorale}%.`;
+                gameState.isrealUnits = Math.min(gameState.isrealUnits + 2, 12);
+            } else if (action.effect === 'arab-morale-boost') {
+                gameState.arabMorale = Math.min(100, gameState.arabMorale + action.value);
+                report += `Arab forces coordinate! Morale increases to ${gameState.arabMorale}%.`;
+            } else if (action.effect === 'capture-territory') {
+                const territory = action.territory;
+                gameState.territoriesControl[territory] = 'israel';
+                changeTerritoryColor(territory, 'israel');
+                report += `Israeli forces captured ${territory}!`;
+            } else if (action.effect === 'israel-units-loss') {
+                gameState.isrealUnits = Math.max(0, gameState.isrealUnits - action.value);
+                report += `Arab counterattack! Israeli units reduced to ${gameState.isrealUnits}.`;
+            } else if (action.effect === 'israel-morale-boost') {
+                gameState.israeliMorale = Math.min(100, gameState.israeliMorale + action.value);
+                report += `Israeli forces boost morale to ${gameState.israeliMorale}%.`;
+            } else if (action.effect === 'israel-units-gain') {
+                gameState.isrealUnits = Math.min(gameState.isrealUnits + action.value, 15);
+                report += `Israeli reinforcements arrive! Units increased to ${gameState.isrealUnits}.`;
+            } else if (action.effect === 'arab-defense-boost') {
+                gameState.arabMorale = Math.min(100, gameState.arabMorale + action.value);
+                report += `Arab defensive positions strengthened!`;
+            } else if (action.effect === 'reorganize-units') {
+                gameState.arabUnits = Math.min(gameState.arabUnits + action.value, 18);
+                report += `Arab forces reorganize! Units increased to ${gameState.arabUnits}.`;
+            } else if (action.effect === 'arab-air-defense') {
+                gameState.arabMorale = Math.min(100, gameState.arabMorale + action.value);
+                report += `Arab air defenses established!`;
+            } else if (action.effect === 'arab-units-gain') {
+                gameState.arabUnits = Math.min(gameState.arabUnits + action.value, 18);
+                report += `Alliance support arrives! Arab units increased to ${gameState.arabUnits}.`;
+            }
+
+            gameState.battleLog.push(report);
+            showBattleReport(report);
+            updateGameDisplay();
+            generateActions(); // Refresh actions to show updated usage
+
+            checkWinCondition();
+        }
+
+        function changeTerritoryColor(territory, newController) {
+            const territoryElement = document.getElementById(`territory-${territory}`);
+            if (territoryElement) {
+                if (newController === 'israel') {
+                    territoryElement.setAttribute('fill', '#1976D2'); // Israeli blue
+                } else if (newController === 'arab') {
+                    territoryElement.setAttribute('fill', '#D84315'); // Arab red
+                } else {
+                    territoryElement.setAttribute('fill', '#FDD835'); // Disputed yellow
                 }
-            });
-            territory.addEventListener('mouseover', function() {
-                this.style.opacity = '0.8';
-                this.style.cursor = 'pointer';
-            });
-            territory.addEventListener('mouseout', function() {
-                this.style.opacity = '1';
-            });
-        });
+            }
+        }
 
-        function showInfo(key) {
-            document.getElementById('info-display').innerHTML = presetInfo[key];
+        function showBattleReport(report) {
+            document.getElementById('battle-log').style.display = 'block';
+            let html = gameState.battleLog.map(log => `<div>• ${log}</div>`).join('');
+            document.getElementById('battle-report').innerHTML = html;
+        }
+
+        function nextTurn() {
+            if (gameState.turn < 6) {
+                gameState.turn++;
+                // Simulate enemy action
+                simulateEnemyTurn();
+                updateGameDisplay();
+                generateActions();
+            } else {
+                endGame();
+            }
+        }
+
+        function simulateEnemyTurn() {
+            const enemySide = gameState.playerSide === 'israel' ? 'arab' : 'israel';
+            const enemyActions = strategicActions[enemySide];
+            
+            // Filter available actions (not used up)
+            const availableActions = enemyActions.filter(action => {
+                const usedCount = gameState.usedActions.filter(used => used === action.id).length;
+                return usedCount < action.maxUses;
+            });
+            
+            if (availableActions.length === 0) {
+                // No actions left, do a basic action
+                let report = `Turn ${gameState.turn} (Enemy): Enemy forces maintain defensive positions.`;
+                gameState.battleLog.push(report);
+                showBattleReport(report);
+                return;
+            }
+            
+            const randomAction = availableActions[Math.floor(Math.random() * availableActions.length)];
+            
+            // Mark enemy action as used
+            gameState.usedActions.push(randomAction.id);
+            
+            let report = `Turn ${gameState.turn} (Enemy): `;
+
+            if (enemySide === 'arab') {
+                if (randomAction.effect === 'arab-defense-boost') {
+                    gameState.arabMorale = Math.min(100, gameState.arabMorale + 10);
+                    report += 'Arab forces secure defensive positions.';
+                } else if (randomAction.effect === 'arab-morale-boost') {
+                    gameState.arabMorale = Math.min(100, gameState.arabMorale + randomAction.value);
+                    report += 'Arab forces coordinate effectively.';
+                } else if (randomAction.effect === 'israel-units-loss') {
+                    gameState.isrealUnits = Math.max(0, gameState.isrealUnits - randomAction.value);
+                    report += 'Arab counterattack damages Israeli forces.';
+                } else if (randomAction.effect === 'reorganize-units') {
+                    gameState.arabUnits = Math.min(gameState.arabUnits + randomAction.value, 18);
+                    report += 'Arab forces reorganize and gain reinforcements.';
+                } else if (randomAction.effect === 'arab-air-defense') {
+                    gameState.arabMorale = Math.min(100, gameState.arabMorale + randomAction.value);
+                    report += 'Arab air defenses are established.';
+                } else if (randomAction.effect === 'arab-units-gain') {
+                    gameState.arabUnits = Math.min(gameState.arabUnits + randomAction.value, 18);
+                    report += 'Alliance support strengthens Arab forces.';
+                }
+            } else {
+                // Israeli enemy actions
+                if (randomAction.effect === 'arab-morale-hit') {
+                    gameState.arabMorale = Math.max(0, gameState.arabMorale - 15);
+                    report += 'Israeli air superiority weakens Arab forces.';
+                } else if (randomAction.effect === 'capture-territory') {
+                    const territory = randomAction.territory;
+                    gameState.territoriesControl[territory] = 'israel';
+                    changeTerritoryColor(territory, 'israel');
+                    report += `Israeli forces capture ${territory}!`;
+                } else if (randomAction.effect === 'israel-morale-boost') {
+                    gameState.israeliMorale = Math.min(100, gameState.israeliMorale + randomAction.value);
+                    report += 'Israeli morale remains high.';
+                } else if (randomAction.effect === 'israel-units-gain') {
+                    gameState.isrealUnits = Math.min(gameState.isrealUnits + randomAction.value, 15);
+                    report += 'Israeli reinforcements arrive.';
+                }
+            }
+
+            gameState.battleLog.push(report);
+            showBattleReport(report);
+        }
+
+        function checkWinCondition() {
+            const israelTerritories = Object.values(gameState.territoriesControl).filter(c => c === 'israel').length;
+            const arabTerritories = Object.values(gameState.territoriesControl).filter(c => c === 'arab').length;
+            const disputedTerritories = Object.values(gameState.territoriesControl).filter(c => c === 'disputed').length;
+
+            // Win conditions
+            if (gameState.isrealUnits <= 0 || gameState.israeliMorale <= 0) {
+                endGame('arab');
+                return;
+            }
+            if (gameState.arabUnits <= 0 || gameState.arabMorale <= 0) {
+                endGame('israel');
+                return;
+            }
+
+            // Territory-based victory
+            if (israelTerritories >= 7) { // Israel controls most territories
+                endGame('israel');
+                return;
+            }
+            if (arabTerritories >= 6) { // Arab coalition maintains control
+                endGame('arab');
+                return;
+            }
+
+            // End of game after 6 turns
+            if (gameState.turn >= 6) {
+                if (israelTerritories > arabTerritories) {
+                    endGame('israel');
+                } else {
+                    endGame('arab');
+                }
+                return;
+            }
+        }
+
+        function endGame(winner = null) {
+            if (!winner) {
+                const israelTerritories = Object.values(gameState.territoriesControl).filter(c => c === 'israel').length;
+                winner = israelTerritories > 4 ? 'israel' : 'arab';
+            }
+
+            const message = winner === 'israel' 
+                ? '🇮🇱 Israel Wins! (Historical Outcome)' 
+                : '🇪🇬 Arab Coalition Wins! (Alternate History!)';
+
+            const israelTerritories = Object.values(gameState.territoriesControl).filter(c => c === 'israel').length;
+            const arabTerritories = Object.values(gameState.territoriesControl).filter(c => c === 'arab').length;
+
+            alert(`Game Over!\n\n${message}\n\nFinal Stats:\n- Israeli Units: ${gameState.isrealUnits} | Morale: ${gameState.israeliMorale}%\n- Arab Units: ${gameState.arabUnits} | Morale: ${gameState.arabMorale}%\n- Territories Controlled: Israel ${israelTerritories}, Arab ${arabTerritories}\n\nClick "OK" to start a new game!`);
+            
+            // Reset game
+            document.getElementById('game-panel').style.display = 'none';
+            document.getElementById('battle-log').style.display = 'none';
+            document.getElementById('info-display').innerHTML = '<strong>⚔️ Welcome to Six-Day War Strategy Game</strong><p style="margin-top: 10px; font-size: 12px; line-height: 1.5;"><strong>How to Play:</strong><br/>1. Choose your side (Israeli or Arab Coalition)<br/>2. Each turn, make strategic decisions<br/>3. Control territories, move units, engage in combat<br/>4. Win conditions: Control key territories or defeat enemy forces<br/><br/><strong>Game Duration:</strong> 6 turns (representing the 6 days)<br/><strong>Your Decisions Matter:</strong> Change history!</p>';
         }
 
         function showRegionInfo(region) {
@@ -398,6 +699,25 @@
             html += `<p><strong>Strategy:</strong> ${info.strategy}</p>`;
             document.getElementById('info-display').innerHTML = html;
         }
+
+        // Add click handlers to territories
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.territory').forEach(territory => {
+                territory.addEventListener('click', function() {
+                    const region = this.getAttribute('data-region');
+                    if (regionInfo[region]) {
+                        showRegionInfo(region);
+                    }
+                });
+                territory.addEventListener('mouseover', function() {
+                    this.style.opacity = '0.8';
+                    this.style.cursor = 'pointer';
+                });
+                territory.addEventListener('mouseout', function() {
+                    this.style.opacity = '1';
+                });
+            });
+        });
     </script>
 </body>
 </html>
