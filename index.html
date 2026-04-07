@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>War Scenarios - Interactive History</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 36px;
+        }
+
+        .subtitle {
+            color: #ffeb3b;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 16px;
+        }
+
+        .scenarios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .scenario-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .scenario-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .scenario-header {
+            background: linear-gradient(135deg, #1976D2 0%, #1565C0 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .scenario-header h2 {
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+
+        .scenario-date {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .scenario-body {
+            padding: 20px;
+        }
+
+        .scenario-description {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .scenario-details {
+            background: #f5f5f5;
+            padding: 12px;
+            border-radius: 5px;
+            font-size: 13px;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .scenario-button {
+            background: linear-gradient(135deg, #1976D2 0%, #1565C0 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            width: 100%;
+            transition: background 0.3s;
+        }
+
+        .scenario-button:hover {
+            background: linear-gradient(135deg, #1565C0 0%, #0D47A1 100%);
+        }
+
+        .coming-soon {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .coming-soon .scenario-button {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .coming-soon-badge {
+            display: inline-block;
+            background: #FDD835;
+            color: #333;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .info-box {
+            background: rgba(255, 255, 255, 0.1);
+            border-left: 4px solid #ffeb3b;
+            padding: 20px;
+            border-radius: 5px;
+            color: white;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            .scenarios-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⚔️ War Scenarios</h1>
+        <p class="subtitle">Explore historical military conflicts through interactive maps and timelines</p>
+
+        <div class="scenarios-grid" id="scenariosContainer">
+            <!-- Scenarios will be generated here -->
+        </div>
+
+        <div class="info-box">
+            <strong>📚 Learn About History</strong>
+            <p style="margin-top: 10px;">Click on any scenario to explore interactive maps, timelines, and strategic information about major historical conflicts.</p>
+        </div>
+    </div>
+
+    <script>
+        // Define all war scenarios here
+        const scenarios = [
+            {
+                id: 'six-day-war',
+                name: 'Six-Day War',
+                date: 'June 5-10, 1967',
+                description: 'Israel vs. Arab Coalition (Egypt, Syria, Jordan)',
+                details: 'Preemptive Israeli strike; decisive Israeli victory; territorial expansion.',
+                url: 'six-day-war-map.html',
+                status: 'active'
+            },
+            {
+                id: 'war-of-independence',
+                name: 'Israeli War of Independence',
+                date: 'May 1948 - July 1949',
+                description: 'Israel vs. Arab League coalition',
+                details: 'Fight for Israeli statehood; multiple Arab invasions repelled.',
+                url: '#',
+                status: 'coming-soon'
+            },
+            {
+                id: 'gulf-war',
+                name: 'Gulf War',
+                date: 'January - February 1991',
+                description: 'Coalition forces vs. Iraq',
+                details: 'Operation Desert Storm; liberation of Kuwait; modern warfare.',
+                url: '#',
+                status: 'coming-soon'
+            },
+            {
+                id: 'hundred-years-war',
+                name: 'Hundred Years\' War',
+                date: '1337 - 1453',
+                description: 'England vs. France',
+                details: 'Medieval warfare; rise of nationalism; Joan of Arc.',
+                url: '#',
+                status: 'coming-soon'
+            },
+            {
+                id: 'vietnam-war',
+                name: 'Vietnam War',
+                date: '1955 - 1975',
+                description: 'USA/South Vietnam vs. North Vietnam/Viet Cong',
+                details: 'Cold War proxy conflict; strategic complexity.',
+                url: '#',
+                status: 'coming-soon'
+            },
+            {
+                id: 'world-war-2',
+                name: 'World War II',
+                date: '1939 - 1945',
+                description: 'Axis vs. Allied Powers',
+                details: 'Global conflict; multiple theaters; historical turning point.',
+                url: '#',
+                status: 'coming-soon'
+            }
+        ];
+
+        // Render scenarios
+        function renderScenarios() {
+            const container = document.getElementById('scenariosContainer');
+            container.innerHTML = scenarios.map(scenario => `
+                <div class="scenario-card ${scenario.status === 'coming-soon' ? 'coming-soon' : ''}">
+                    <div class="scenario-header">
+                        <h2>${scenario.name}</h2>
+                        <div class="scenario-date">${scenario.date}</div>
+                    </div>
+                    <div class="scenario-body">
+                        <p class="scenario-description">${scenario.description}</p>
+                        <div class="scenario-details">${scenario.details}</div>
+                        ${scenario.status === 'coming-soon' ? 
+                            `<div class="coming-soon-badge">Coming Soon</div>` : 
+                            `<button class="scenario-button" onclick="navigateToScenario('${scenario.url}')">Explore Scenario</button>`
+                        }
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function navigateToScenario(url) {
+            if (url !== '#') {
+                window.location.href = url;
+            }
+        }
+
+        // Initialize
+        renderScenarios();
+    </script>
+</body>
+</html>
