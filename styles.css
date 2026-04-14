@@ -1,0 +1,165 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+}
+
+#game-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+#story {
+    height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #fafafa;
+    white-space: pre-wrap;
+}
+
+#turn-info {
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #555;
+}
+
+.action-group {
+    margin-bottom: 15px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.action-group h3 {
+    margin: 0 0 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+.action-group button {
+    margin: 4px 6px 4px 0;
+    padding: 10px 16px;
+    font-size: 14px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.action-group button:hover {
+    background-color: #0056b3;
+}
+
+#actions button.secondary {
+    background-color: #6c757d;
+}
+
+#actions button.secondary:hover {
+    background-color: #5a6268;
+}
+
+#toggle-debug {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 8px 12px;
+}
+
+#toggle-debug:hover {
+    background-color: #5a6268;
+}
+
+#main-menu {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#main-menu button {
+    margin: 10px;
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#main-menu button:hover {
+    background-color: #218838;
+}
+
+#scenarios-view, #achievements-view {
+    margin-top: 20px;
+}
+
+#scenario-search {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.scenario-item {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.scenario-item h3 {
+    margin-top: 0;
+}
+
+.start-scenario {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.start-scenario:hover {
+    background-color: #0056b3;
+}
+
+#achievements-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.achievement {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    width: 200px;
+}
+
+.achievement.unlocked {
+    background-color: #d4edda;
+}
+
+.achievement.locked {
+    background-color: #f8d7da;
+    opacity: 0.6;
+}
